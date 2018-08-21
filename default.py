@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 import urllib, urlparse, sys, xbmcplugin ,xbmcgui, xbmcaddon, xbmc, os, json, hashlib, re, urllib2, htmlentitydefs
 
 Versao = "18.08.18"
@@ -1200,7 +1200,7 @@ def getmd5(t):
 
 def CheckUpdate(msg): #200
 	try:
-		uversao = urllib2.urlopen( "https://raw.githubusercontent.com/RH1CK/CubePlay/master/version.txt" ).read().replace('\n','').replace('\r','')
+		uversao = urllib2.urlopen( "https://github.com/juniortavares/Testes/blob/master/version.txt" ).read().replace('\n','').replace('\r','')
 		uversao = re.compile('[a-zA-Z\.\d]+').findall(uversao)[0]
 		#xbmcgui.Dialog().ok(Versao, uversao)
 		if uversao != Versao:
@@ -1216,21 +1216,21 @@ def CheckUpdate(msg): #200
 def Update():
 	Path = xbmc.translatePath( xbmcaddon.Addon().getAddonInfo('path') ).decode("utf-8")
 	try:
-		fonte = urllib2.urlopen( "https://raw.githubusercontent.com/RH1CK/CubePlay/master/default.py" ).read().replace('\n','')
+		fonte = urllib2.urlopen( "https://github.com/juniortavares/Testes/blob/master/default.py" ).read().replace('\n','')
 		prog = re.compile('#checkintegrity25852').findall(fonte)
 		if prog:
 			py = os.path.join( Path, "default.py")
 			file = open(py, "w")
 			file.write(fonte)
 			file.close()
-		fonte = urllib2.urlopen( "https://raw.githubusercontent.com/RH1CK/CubePlay/master/resources/settings.xml" ).read().replace('\n','')
+		fonte = urllib2.urlopen( "https://github.com/juniortavares/Testes/blob/master/resources/settings.xml" ).read().replace('\n','')
 		prog = re.compile('</settings>').findall(fonte)
 		if prog:
 			py = os.path.join( Path, "resources/settings.xml")
 			file = open(py, "w")
 			file.write(fonte)
 			file.close()
-		fonte = urllib2.urlopen( "https://raw.githubusercontent.com/RH1CK/CubePlay/master/addon.xml" ).read().replace('\n','')
+		fonte = urllib2.urlopen( "https://github.com/juniortavares/Testes/blob/master/addon.xml" ).read().replace('\n','')
 		prog = re.compile('</addon>').findall(fonte)
 		if prog:
 			py = os.path.join( Path, "addon.xml")
